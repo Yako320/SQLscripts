@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS comandes (
     num_comanda INT PRIMARY KEY,
     preu_total DECIMAL(10, 2),
     data DATETIME,
-    estat BOOLEAN,
+    estat VARCHAR(50),
     dni_client VARCHAR(9),
     FOREIGN KEY (dni_client) REFERENCES clients(dni)
 );
