@@ -53,5 +53,5 @@ SELECT
     SUM(comandes.preu_total) AS total_facturat
 FROM clients
 INNER JOIN comandes ON clients.dni = comandes.dni_client
-WHERE clients.dni = '12345678A'
+WHERE clients.dni = '11223344C'
 GROUP BY clients.nom;
