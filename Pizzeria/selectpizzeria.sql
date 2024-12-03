@@ -45,19 +45,6 @@ FROM pizzes
 INNER JOIN pizzes_ingredients ON pizzes.id = pizzes_ingredients.id_pizza
 GROUP BY pizzes.nom;
 
--- 10. Llista el nombre total de comandes per client, mostrant el nom del client i el total de comandes realitzades.
-SELECT clients.nom, COUNT(comandes.num_comanda) AS total_comandes
-FROM clients
-LEFT JOIN comandes ON clients.dni = comandes.dni_client
-GROUP BY clients.nom;
-
--- 11. Llista les pizzes que tenen més de tres ingredients, mostrant el nom de la pizza i el número d'ingredients.
-SELECT pizzes.nom AS pizza, COUNT(pizzes_ingredients.id_ingredient) AS num_ingredients
-FROM pizzes
-INNER JOIN pizzes_ingredients ON pizzes.id = pizzes_ingredients.id_pizza
-GROUP BY pizzes.nom
-HAVING COUNT(pizzes_ingredients.id_ingredient) > 3;
-
 -- 12. Extreu la facturació que ha tingut un client específic en tota la seva vida, indicant la base imposable, l'IVA i el total facturat.
 SELECT 
     clients.nom AS client,
@@ -66,5 +53,5 @@ SELECT
     SUM(comandes.preu_total) AS total_facturat
 FROM clients
 INNER JOIN comandes ON clients.dni = comandes.dni_client
-WHERE clients.dni = '12345678A' -- Substitueix pel DNI del client específic
+WHERE clients.dni = '12345678A'
 GROUP BY clients.nom;
