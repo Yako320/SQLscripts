@@ -1,4 +1,3 @@
--- CLIENTS
 CREATE TABLE IF NOT EXISTS clients (
     dni VARCHAR(9) PRIMARY KEY,
     nom VARCHAR(30),
@@ -6,7 +5,6 @@ CREATE TABLE IF NOT EXISTS clients (
     telefon VARCHAR(9)
 );
 
--- COMANDES
 CREATE TABLE IF NOT EXISTS comandes (
     num_comanda INT PRIMARY KEY,
     preu_total DECIMAL(10, 2),
@@ -16,28 +14,24 @@ CREATE TABLE IF NOT EXISTS comandes (
     FOREIGN KEY (dni_client) REFERENCES clients(dni)
 );
 
--- PIZZES
 CREATE TABLE IF NOT EXISTS pizzes (
     id INT PRIMARY KEY,
     nom VARCHAR(30),
     preu_base DECIMAL(10, 2)
 );
 
--- MASSES
 CREATE TABLE IF NOT EXISTS masses (
     id INT PRIMARY KEY,
     nom VARCHAR(30),
     preu DECIMAL(10, 2)
 );
 
--- AL·LERGÒGENS
 CREATE TABLE IF NOT EXISTS alergogens (
     id INT PRIMARY KEY,
     nom VARCHAR(30),
     descripcio TEXT
 );
 
--- INGREDIENTS
 CREATE TABLE IF NOT EXISTS ingredients (
     id INT PRIMARY KEY,
     nom VARCHAR(30),
@@ -47,14 +41,12 @@ CREATE TABLE IF NOT EXISTS ingredients (
     FOREIGN KEY (id_tipus) REFERENCES tipus_ingredients(id)
 );
 
--- TIPUS_INGREDIENTS
 CREATE TABLE IF NOT EXISTS tipus_ingredients (
     id INT PRIMARY KEY,
     nom VARCHAR(30),
     descripcio TEXT
 );
 
--- PIZZES_MASSES
 CREATE TABLE IF NOT EXISTS pizzes_masses (
     id_pizza INT,
     id_massa INT,
@@ -63,7 +55,6 @@ CREATE TABLE IF NOT EXISTS pizzes_masses (
     FOREIGN KEY (id_massa) REFERENCES masses(id)
 );
 
--- COMANDES_PIZZES
 CREATE TABLE IF NOT EXISTS comandes_pizzes (
     id_pizza INT,
     id_comanda INT,
@@ -72,7 +63,6 @@ CREATE TABLE IF NOT EXISTS comandes_pizzes (
     FOREIGN KEY (id_comanda) REFERENCES comandes(num_comanda)
 );
 
--- INGREDIENTS_AL·LERGÒGENS
 CREATE TABLE IF NOT EXISTS ingredients_alergogens (
     id_ingredient INT,
     id_alergogen INT,
@@ -81,7 +71,6 @@ CREATE TABLE IF NOT EXISTS ingredients_alergogens (
     FOREIGN KEY (id_alergogen) REFERENCES alergogens(id)
 );
 
--- PIZZES_INGREDIENTS
 CREATE TABLE IF NOT EXISTS pizzes_ingredients (
     id_pizza INT,
     id_ingredient INT,
