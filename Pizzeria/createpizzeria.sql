@@ -48,34 +48,30 @@ CREATE TABLE IF NOT EXISTS tipus_ingredients (
 );
 
 CREATE TABLE IF NOT EXISTS pizzes_masses (
-    id_pizza INT,
-    id_massa INT,
-    PRIMARY KEY (id_pizza, id_massa),
+    id_pizza INT PRIMARY KEY,
+    id_massa INT PRIMARY KEY,
     FOREIGN KEY (id_pizza) REFERENCES pizzes(id),
     FOREIGN KEY (id_massa) REFERENCES masses(id)
 );
 
 CREATE TABLE IF NOT EXISTS comandes_pizzes (
-    id_pizza INT,
-    id_comanda INT,
-    PRIMARY KEY (id_pizza, id_comanda),
+    id_pizza INT PRIMARY KEY,
+    id_comanda INT PRIMARY KEY,
     FOREIGN KEY (id_pizza) REFERENCES pizzes(id),
     FOREIGN KEY (id_comanda) REFERENCES comandes(num_comanda)
 );
 
 CREATE TABLE IF NOT EXISTS ingredients_alergogens (
-    id_ingredient INT,
-    id_alergogen INT,
-    PRIMARY KEY (id_ingredient, id_alergogen),
+    id_ingredient INT PRIMARY KEY,
+    id_alergogen INT PRIMARY KEY,
     FOREIGN KEY (id_ingredient) REFERENCES ingredients(id),
     FOREIGN KEY (id_alergogen) REFERENCES alergogens(id)
 );
 
 CREATE TABLE IF NOT EXISTS pizzes_ingredients (
-    id_pizza INT,
-    id_ingredient INT,
+    id_pizza INT PRIMARY KEY,
+    id_ingredient INT PRIMARY KEY,
     grams_per_ingredient DECIMAL(10, 2),
-    PRIMARY KEY (id_pizza, id_ingredient),
     FOREIGN KEY (id_pizza) REFERENCES pizzes(id),
     FOREIGN KEY (id_ingredient) REFERENCES ingredients(id)
 );
